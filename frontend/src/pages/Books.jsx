@@ -8,8 +8,9 @@ const Books = () => {
   useEffect(() => {
     const fetch = async () => {
       await axios
-      .get("https://localhost:1000/api/v1/getBooks")
-      .then((res) => setData(res.data.Books));
+      .get("http://localhost:1000/api/v1/getBooks")
+      // .then((res) => console.log(res.data.books));
+      .then((res) => setData(res.data.books));
     };
     fetch();
   });
@@ -18,10 +19,10 @@ const Books = () => {
       className="bg-dark" 
       style={{ minHeight: "91.5vh"}}
     >
-      <div className="d-flex justify-content-center align-items-center py-3">
+      <div className="d-flex justify-content-center align-items-center py-3 flex-column">
         <h4 className="text-white">Books Section</h4>
         {Data ? (
-         <BooksSection data={Data}/>
+        <BooksSection data={Data}/>
         ): (
         <div className="text-white">Loding...</div>
         )}
